@@ -1,5 +1,6 @@
 package dsy.bibliotecaam.api_gateway.jwt;
 
+import io.jsonwebtoken.JwtException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -15,17 +16,17 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
-
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.io.Decoders;
+import io.jsonwebtoken.security.Keys;
 import java.io.IOException;
 import java.security.Key;
-import java.util.Base64;
 import java.util.Collections;
 import java.util.List;
-/*
+
 @Component
 public class JwtAuthFilter  extends OncePerRequestFilter {
-    // Must be the exact same value as jwt.secret used by the "security" service
-    // to sign tokens. Comes from config-server's shared config/application.yml.
     @Value("${jwt.secret}")
     private String secret;
 
@@ -35,9 +36,7 @@ public class JwtAuthFilter  extends OncePerRequestFilter {
 
         final String token = getTokenFromRequest(request);
 
-        // No token at all: just continue. If the route requires auth,
-        // the SecurityFilterChain's authorizeHttpRequests will reject it.
-        // If the route is permitAll (e.g. /auth/**, swagger), it goes through.
+
         if (token == null) {
             filterChain.doFilter(request, response);
             return;
@@ -61,9 +60,7 @@ public class JwtAuthFilter  extends OncePerRequestFilter {
 
             filterChain.doFilter(request, response);
 
-        } catch (ExpiredJwtException | JwtException ex) {
-            // Token was present but invalid/expired: fail fast with a clear 401
-            // instead of silently falling through to a generic 403 later.
+        } catch (JwtException ex) {
             sendUnauthorized(response, "Token invalido o expirado");
         }
     }
@@ -95,4 +92,3 @@ public class JwtAuthFilter  extends OncePerRequestFilter {
         response.getWriter().write("{\"error\": \"" + message + "\"}");
     }
 }
-*/
