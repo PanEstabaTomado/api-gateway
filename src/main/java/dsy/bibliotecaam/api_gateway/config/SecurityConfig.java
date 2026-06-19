@@ -18,8 +18,44 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
-                .csrf(csrf -> csrf.disable()).sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)).authorizeHttpRequests(auth -> auth.requestMatchers("/api/bibliotecaam/auth/**").permitAll()
-                        .anyRequest().authenticated())
+                .csrf(csrf ->
+                        csrf.disable()).sessionManagement(
+                                session ->
+                        session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .authorizeHttpRequests(auth -> {
+                    auth.requestMatchers(
+                            "/api/bibliotecaam/auth/**",
+                            /*Este es de libro*/
+                            "/api/bibliotecaam/libro/swagger-ui/**",
+                            "/api/bibliotecaam/libro/swagger-ui.html",
+                            "/api/bibliotecaam/libro/v3/api-docs/**",
+                            /*Este es de donacion*/
+
+                            /*Este es de sancion*/
+
+                            /*Este es de empleado*/
+
+                            /*Este es de donacion*/
+
+                            /*Este es de donacion*/
+
+                            /*Este es de donacion*/
+
+                            /*Este es de donacion*/
+
+                            /*Este es de donacion*/
+
+                            /*Este es de seguridad*/
+
+                            "/api/bibliotecaam/auth/swagger-ui/**",
+                            "/api/bibliotecaam/auth/swagger-ui.html",
+                            "/api/bibliotecaam/auth/v3/api-docs/**",
+                            "/swagger-ui/**",
+                            "/v3/api-docs/**",
+                            "/webjars/**"
+                    ).permitAll();
+                    auth.anyRequest().authenticated();
+                })
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
