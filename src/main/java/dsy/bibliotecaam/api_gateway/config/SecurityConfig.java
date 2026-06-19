@@ -23,39 +23,39 @@ public class SecurityConfig {
                                 session ->
                         session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> {
-                    auth.requestMatchers(
-                            "/api/bibliotecaam/auth/**",
-                            /*Este es de libro*/
-                            "/api/bibliotecaam/libro/swagger-ui/**",
-                            "/api/bibliotecaam/libro/swagger-ui.html",
-                            "/api/bibliotecaam/libro/v3/api-docs/**",
-                            /*Este es de donacion*/
+                        auth.requestMatchers(
+                                "/api/bibliotecaam/auth/**",
+                                        /*Este es de libro*/
+                                        "/api/bibliotecaam/libro/swagger-ui/**",
+                                        "/api/bibliotecaam/libro/swagger-ui.html",
+                                        "/api/bibliotecaam/libro/v3/api-docs/**",
+                                        /*Este es de donacion*/
 
-                            /*Este es de sancion*/
+                                        /*Este es de sancion*/
 
-                            /*Este es de empleado*/
+                                        /*Este es de empleado*/
 
-                            /*Este es de donacion*/
+                                        /*Este es de donacion*/
 
-                            /*Este es de donacion*/
+                                        /*Este es de donacion*/
 
-                            /*Este es de donacion*/
+                                        /*Este es de donacion*/
 
-                            /*Este es de donacion*/
+                                        /*Este es de donacion*/
 
-                            /*Este es de donacion*/
+                                        /*Este es de donacion*/
 
-                            /*Este es de seguridad*/
+                                        /*Este es de seguridad*/
 
-                            "/api/bibliotecaam/auth/swagger-ui/**",
-                            "/api/bibliotecaam/auth/swagger-ui.html",
-                            "/api/bibliotecaam/auth/v3/api-docs/**",
-                            "/swagger-ui/**",
-                            "/v3/api-docs/**",
-                            "/webjars/**"
-                    ).permitAll();
-                    auth.anyRequest().authenticated();
-                })
+                                        "/api/bibliotecaam/security/swagger-ui/**",
+                                        "/api/bibliotecaam/security/swagger-ui.html",
+                                        "/api/bibliotecaam/security/v3/api-docs/**",
+                                "/swagger-ui/**",
+                                "/v3/api-docs/**",
+                                "/webjars/**"
+                                        ).permitAll();
+                        auth.anyRequest().authenticated();
+                        })
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
