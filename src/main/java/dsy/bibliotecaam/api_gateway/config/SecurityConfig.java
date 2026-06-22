@@ -35,21 +35,24 @@ public class SecurityConfig {
 
                                         /*Este es de empleado*/
 
-                                        /*Este es de donacion*/
+                                        /*Este es de compra*/
 
-                                        /*Este es de donacion*/
+                                        /*Este es de Taller*/
 
-                                        /*Este es de donacion*/
+                                        /*Este es de Asistencia*/
 
-                                        /*Este es de donacion*/
+                                        /*Este es de Prestamo*/
 
-                                        /*Este es de donacion*/
+                                        /*Este es de reseña*/
+
+                                        /*Este es de usuario*/
 
                                         /*Este es de seguridad*/
 
                                         "/api/bibliotecaam/security/swagger-ui/**",
                                         "/api/bibliotecaam/security/swagger-ui.html",
                                         "/api/bibliotecaam/security/v3/api-docs/**",
+                                /*Otros que dejo por si acaso necesito hacerlo mas flexible*/
                                 "/swagger-ui/**",
                                 "/v3/api-docs/**",
                                 "/webjars/**"
