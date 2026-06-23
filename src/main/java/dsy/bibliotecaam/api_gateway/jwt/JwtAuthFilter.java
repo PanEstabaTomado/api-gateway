@@ -1,6 +1,7 @@
 package dsy.bibliotecaam.api_gateway.jwt;
 
 import io.jsonwebtoken.JwtException;
+import jakarta.annotation.PostConstruct;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -31,10 +32,16 @@ public class JwtAuthFilter  extends OncePerRequestFilter {
     @Value("${jwt.secret}")
     private String secret;
 
+    @PostConstruct
+    public void init(){
+        System.out.println(">>> JwtAuthFilter creado, secret length: "
+        + (secret != null ? secret.length() : "NULL"));
+    }
+
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
-
+        System.out.println(">>> doFilterInternal ejecutado para: "+request.getRequestURI());
         final String token = getTokenFromRequest(request);
 
 
@@ -96,6 +103,12 @@ public class JwtAuthFilter  extends OncePerRequestFilter {
     @Override
     protected boolean shouldNotFilter(HttpServletRequest request){
         String path = request.getRequestURI();
-        return path.startsWith("/api/bibliotecaam/auth/");
+        boolean skip = path.startsWith("/api/bibliotecaam/auth/")
+                || path.startsWith("/swagger-ui")
+                || path.startsWith("/v3/api-docs")
+                || path.startsWith("/webjars")
+                || path.contains("/v3/api-docs");
+        System.out.println(">>> shouldNotFilter para: "+path+" -> "+skip);
+        return skip;
     }
 }

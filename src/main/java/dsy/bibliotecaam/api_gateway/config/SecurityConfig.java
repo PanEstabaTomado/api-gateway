@@ -11,12 +11,16 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 @Configuration
 @EnableWebSecurity
-@RequiredArgsConstructor
 public class SecurityConfig {
     private final JwtAuthFilter jwtAuthFilter;
 
+    public SecurityConfig(JwtAuthFilter jwtAuthFilter) {
+        this.jwtAuthFilter = jwtAuthFilter;
+    }
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        System.out.println(">>> SecurityFilterChain siendo configurado");
         return http
                 .csrf(csrf ->
                         csrf.disable()).sessionManagement(
@@ -62,9 +66,11 @@ public class SecurityConfig {
                                 "/api/bibliotecaam/usuario/v3/api-docs/**",
                                 /*Este es de seguridad*/
                                 "/api/bibliotecaam/auth/swagger-ui/**",
+                                "/api/bibliotecaam/auth/v3/api-docs",
                                 "/api/bibliotecaam/auth/v3/api-docs/**",
                                 /*Otros que dejo por si acaso necesito hacerlo mas flexible*/
                                 "/swagger-ui/**",
+                                "/swagger-ui/index.html",
                                 "/v3/api-docs/**",
                                 "/webjars/**"
                                         ).permitAll();
