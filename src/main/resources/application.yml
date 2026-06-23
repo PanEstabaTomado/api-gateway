@@ -3,9 +3,9 @@ spring:
     name: api-gateway
   config:
     import: 'optional:configserver:http://localhost:8097'
-  mvc:
-    pathmatch:
-      matching-strategy: ant_path_matcher
+  autoconfigure:
+    exlcude:
+      - org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration
 
 spring-doc:
   apid-docs:
