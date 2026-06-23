@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
@@ -21,6 +22,10 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.web.server.ServerWebExchange;
+import org.springframework.web.server.WebFilter;
+import org.springframework.web.server.WebFilterChain;
+import reactor.core.publisher.Mono;
 
 import javax.crypto.SecretKey;
 import java.io.IOException;
@@ -29,6 +34,7 @@ import java.util.List;
 
 @Component
 public class JwtAuthFilter  extends OncePerRequestFilter {
+
     @Value("${jwt.secret}")
     private String secret;
 
@@ -37,7 +43,27 @@ public class JwtAuthFilter  extends OncePerRequestFilter {
         System.out.println(">>> JwtAuthFilter creado, secret length: "
         + (secret != null ? secret.length() : "NULL"));
     }
+/*
+    @Override
+    public Mono<Void> filter(ServerWebExchange exchange, WebFilterChain chain){
+        String path = exchange.getRequest().getPath().value();
+        if (path.startsWith("/api/bibliotecaam/auth/")
+                || path.startsWith("/swagger-ui")
+                || path.startsWith("/v3/api-docs")
+                || path.startsWith("/webjars")
+                || path.contains("/v3/api-docs")) {
+            return chain.filter(exchange);
+        }
+        String authHeader = exchange.getRequest().getHeaders()
+                .getFirst(HttpHeaders.AUTHORIZATION);
+        if (authHeader == null || !authHeader.startsWith("Bearer ")){
+            exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
+            return exchange.getResponse().setComplete();
+        }
 
+        return chain.filter(exchange);
+    }
+*/
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
@@ -111,4 +137,6 @@ public class JwtAuthFilter  extends OncePerRequestFilter {
         System.out.println(">>> shouldNotFilter para: "+path+" -> "+skip);
         return skip;
     }
+
+
 }
