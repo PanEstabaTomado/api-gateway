@@ -4,11 +4,11 @@ spring:
   config:
     import: 'optional:configserver:http://localhost:8097'
   autoconfigure:
-    exlcude:
+    exclude:
       - org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration
 
-spring-doc:
-  apid-docs:
-    enabled: false
+springdoc:
+  api-docs:
+    enabled: true
   swagger-ui:
-    enabled: false
+    enabled: true
