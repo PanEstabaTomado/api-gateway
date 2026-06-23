@@ -27,52 +27,41 @@ public class SecurityConfig {
                                 "/api/bibliotecaam/auth/**",
                                 /*Este es de libro*/
                                 "/api/bibliotecaam/libro/swagger-ui/**",
-                                "/api/bibliotecaam/libro/swagger-ui/index.html",
                                 "/api/bibliotecaam/libro/v3/api-docs/**",
                                 /*Este es de donacion*/
                                 "/api/bibliotecaam/donacion/swagger-ui/**",
-                                "/api/bibliotecaam/donacion/swagger-ui/index.html",
                                 "/api/bibliotecaam/donacion/v3/api-docs/**",
                                 /*Este es de sancion*/
                                 "/api/bibliotecaam/sancion/swagger-ui/**",
-                                "/api/bibliotecaam/sancion/swagger-ui/index.html",
                                 "/api/bibliotecaam/sancion/v3/api-docs/**",
 
                                 /*Este es de empleado*/
                                 "/api/bibliotecaam/empleado/swagger-ui/**",
-                                "/api/bibliotecaam/empleado/swagger-ui/index.html",
                                 "/api/bibliotecaam/empleado/v3/api-docs/**",
 
                                 /*Este es de compra*/
                                 "/api/bibliotecaam/compra/swagger-ui/**",
-                                "/api/bibliotecaam/compra/swagger-ui/index.html",
                                 "/api/bibliotecaam/compra/v3/api-docs/**",
 
                                 /*Este es de Taller*/
                                 "/api/bibliotecaam/taller/swagger-ui/**",
-                                "/api/bibliotecaam/taller/swagger-ui/index.html",
                                 "/api/bibliotecaam/taller/v3/api-docs/**",
 
                                 /*Este es de Asistencia*/
                                 "/api/bibliotecaam/asistencia/swagger-ui/**",
-                                "/api/bibliotecaam/asistencia/swagger-ui/index.html",
                                 "/api/bibliotecaam/asistencia/v3/api-docs/**",
 
                                 /*Este es de Prestamo*/
                                 "/api/bibliotecaam/prestamo/swagger-ui/**",
-                                "/api/bibliotecaam/prestamo/swagger-ui/index.html",
                                 "/api/bibliotecaam/prestamo/v3/api-docs/**",
                                 /*Este es de reseña*/
                                 "/api/bibliotecaam/resenia/swagger-ui/**",
-                                "/api/bibliotecaam/resenia/swagger-ui/index.html",
                                 "/api/bibliotecaam/resenia/v3/api-docs/**",
                                 /*Este es de usuario*/
                                 "/api/bibliotecaam/usuario/swagger-ui/**",
-                                "/api/bibliotecaam/usuario/swagger-ui/index.html",
                                 "/api/bibliotecaam/usuario/v3/api-docs/**",
                                 /*Este es de seguridad*/
                                 "/api/bibliotecaam/auth/swagger-ui/**",
-                                "/api/bibliotecaam/auth/swagger-ui/index.html",
                                 "/api/bibliotecaam/auth/v3/api-docs/**",
                                 /*Otros que dejo por si acaso necesito hacerlo mas flexible*/
                                 "/swagger-ui/**",

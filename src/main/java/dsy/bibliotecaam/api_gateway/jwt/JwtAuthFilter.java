@@ -92,4 +92,10 @@ public class JwtAuthFilter  extends OncePerRequestFilter {
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
         response.getWriter().write("{\"error\": \"" + message + "\"}");
     }
+
+    @Override
+    protected boolean shouldNotFilter(HttpServletRequest request){
+        String path = request.getRequestURI();
+        return path.startsWith("/api/bibliotecaam/auth/");
+    }
 }
