@@ -35,7 +35,7 @@ public class JwtAuthFilter implements WebFilter {
     private final ObjectMapper objectMapper = new ObjectMapper();
 
     private static final List<String> PUBLIC_PATHS = List.of(
-            "/api/bibliotecaam/auth/",
+            "/api/bibliotecaam/auth",
             "/swagger-ui",
             "/v3/api-docs",
             "/webjars"
