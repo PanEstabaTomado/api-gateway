@@ -54,7 +54,7 @@ public class JwtAuthFilter implements WebFilter {
         if (isPublic) {
             return chain.filter(exchange);
         }
-
+        System.out.println(">>> path: "+path+" isPublic: "+isPublic);
         String token = getToken(exchange.getRequest());
 
         if (token == null) {
