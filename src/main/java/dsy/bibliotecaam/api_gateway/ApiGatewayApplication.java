@@ -5,8 +5,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @SpringBootApplication(exclude = {
-		org.springframework.boot.autoconfigure.security.
-				servlet.UserDetailsServiceAutoConfiguration.class
+		org.springframework.boot.autoconfigure.security.reactive
+				.ReactiveUserDetailsServiceAutoConfiguration.class,
+		org.springframework.boot.autoconfigure.security.reactive
+				.ReactiveUserDetailsServiceAutoConfiguration.class
 })
 @EnableDiscoveryClient
 
